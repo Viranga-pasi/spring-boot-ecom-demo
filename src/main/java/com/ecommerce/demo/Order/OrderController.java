@@ -1,9 +1,7 @@
 package com.ecommerce.demo.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +16,15 @@ public class OrderController {
     @GetMapping
     public List<Order> getAll(){
         return orderService.returnAll();
+    }
+
+    @PostMapping("/create/{cusId}/{listId}")
+    public String createOrder(
+            @RequestBody Order orderData,
+            @PathVariable int cusId,
+            @PathVariable int listId)
+    {
+        return orderService.createOrder(orderData, cusId, listId);
     }
 
 }

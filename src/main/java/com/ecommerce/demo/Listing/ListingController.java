@@ -22,15 +22,14 @@ public class ListingController {
     @GetMapping
     public List<Listing> getListing() {
         return listService.returnAllListing();
-//        List<Listing> l=new ArrayList<>();
-//        Listing k=new Listing();
-//        k.setName("AAAA");
-//        l.add(k);
-//        return l;
+
     }
 
     @PostMapping("/create/{listId}")
-    public Listing createListing(@RequestBody Listing listData, @PathVariable int listId) {
+    public Listing createListing(
+            @RequestBody Listing listData,
+            @PathVariable int listId)
+    {
         return listService.createListing(listData, listId);
 
     }
