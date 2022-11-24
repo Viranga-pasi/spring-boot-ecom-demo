@@ -1,0 +1,11 @@
+package com.ecommerce.demo.Listing;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface ListingRepository extends JpaRepository<Listing, Integer> {
+
+    @Query(value = "SELECT * FROM listing WHERE list_name =?1")
+    Listing returnListing(String name);
+
+}
